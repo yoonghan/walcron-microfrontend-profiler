@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "package-name": "git+https://yoonghan:$GH_TOKEN@github.com/yoonghan/walcron-microfrontend-shared.git",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
