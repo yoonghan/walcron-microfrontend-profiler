@@ -1,10 +1,12 @@
 import React from "react";
 import { PageContextProvider } from "./usePageContext";
 import type { PageContext } from "./types";
-import "./index.css";
 import { Link } from "./Link";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 export { PageShell };
+
+const defaultTheme = createTheme();
 
 function PageShell({
   children,
@@ -16,14 +18,19 @@ function PageShell({
   return (
     <React.StrictMode>
       <PageContextProvider pageContext={pageContext}>
-        <Layout>
-          <Sidebar>
-            <Link className="navitem" href="/">
-              Home
-            </Link>
-          </Sidebar>
-          <Content>{children}</Content>
-        </Layout>
+        <ThemeProvider theme={defaultTheme}>
+          <Layout>
+            <Sidebar>
+              <Link className="navitem" href="/">
+                Home
+              </Link>
+              <Link className="navitem" href="/signin">
+                SignIn
+              </Link>
+            </Sidebar>
+            <Content>{children}</Content>
+          </Layout>
+        </ThemeProvider>
       </PageContextProvider>
     </React.StrictMode>
   );
