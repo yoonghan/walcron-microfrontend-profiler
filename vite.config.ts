@@ -12,6 +12,7 @@ export default defineConfig({
       // Modules to expose
       exposes: {
         "./SignIn": "./src/components/SignIn/index.tsx",
+        "./Button": "./src/components/Button/index.tsx",
       },
       shared: ["react", "react-dom"],
     }),
