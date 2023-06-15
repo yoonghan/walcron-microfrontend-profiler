@@ -13,12 +13,29 @@ export default defineConfig({
       filename: "remoteEntry.js",
       // Modules to expose
       exposes: {
-        "./Button": "./src/Button.tsx",
+        "./SignIn": "./src/components/SignIn/index.tsx",
       },
-      shared: ["react", "react-dom"],
+      shared: [],
     }),
   ],
   build: {
     target: "esnext",
+  },
+  test: {
+    global: true,
+    environment: "jsdom",
+    setupFiles: "./test-setup.js",
+    coverage: {
+      provider: "istanbul",
+      reporter: ["text", "cobertura"],
+      threshold: {
+        global: {
+          branches: 100,
+          functions: 100,
+          lines: 100,
+          statements: 100,
+        },
+      },
+    },
   },
 });
