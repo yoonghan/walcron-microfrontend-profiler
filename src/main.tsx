@@ -5,11 +5,18 @@ import "./index.css";
 import reportWebVitals from "./webvital/reportWebVitals";
 import consoleReportHandler from "./webvital/consoleReportHandler";
 import Root from "./routes/root";
+import Contact from "./routes/contact";
+import ErrorPage from "./error-page";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "contacts/:contactId",
+    element: <Contact />,
   },
 ]);
 
