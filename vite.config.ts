@@ -13,7 +13,7 @@ export default defineConfig({
       exposes: {
         "./SignIn": "./src/components/SignIn/index.tsx",
       },
-      shared: [],
+      shared: ["react", "react-dom"],
     }),
   ],
   build: {
