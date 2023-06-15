@@ -1,9 +1,10 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import "./App.css";
 import { Logo } from "@yoonghan/walcron-microfrontend-shared";
 
-function Page() {
+function App() {
   const [count, setCount] = useState(0);
 
   return (
@@ -33,4 +34,4 @@ function Page() {
   );
 }
 
-export { Page };
+export default App;

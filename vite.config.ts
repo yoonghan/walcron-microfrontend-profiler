@@ -1,5 +1,4 @@
 import { defineConfig } from "vite";
-import ssr from "vite-plugin-ssr/plugin";
 import react from "@vitejs/plugin-react";
 import federation from "@originjs/vite-plugin-federation";
 
@@ -7,7 +6,6 @@ import federation from "@originjs/vite-plugin-federation";
 export default defineConfig({
   plugins: [
     react(),
-    ssr(),
     federation({
       name: "remote-app",
       filename: "remoteEntry.js",
