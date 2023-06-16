@@ -25,13 +25,10 @@ jobs:
           cache: "npm"
           registry-url: https://npm.pkg.github.com/
 
-      - name: Authenticate with private NPM package
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-          echo ${{ secrets.NPM_TOKEN }}
-
       - name: 📥 Download deps
-        uses: bahmutov/npm-install@v1
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # as requested by the React team :)
       # https://reactjs.org/blog/2019/10/22/react-release-channels.html#using-the-next-channel-for-integration-testing
