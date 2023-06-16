@@ -2,6 +2,29 @@
 
 Microfrontend used to maintain users in system
 
+---
+
+[![Build Status][build-badge]][build]
+[![Code Coverage][coverage-badge]][coverage]
+
+## Development commands
+
+Firstly clone from the repository and download the necessary dependencies.
+
+`npm install`
+
+To execute the program for development
+
+`npm run dev`
+
+To run tests
+
+`npm run test`
+
+To build for container / module federation use. If builds successfully a dist/assets/remoteEntry.js will be generated.
+
+`npm run build`
+
 ## Deployment
 
 1. Create a Github PAT (classic), with only read:packages access.
@@ -15,3 +38,8 @@ Microfrontend used to maintain users in system
 //npm.pkg.github.com/:_authToken=...
 @yoonghan:registry=https://npm.pkg.github.com/
 ```
+
+[build-badge]: https://img.shields.io/github/actions/workflow/status/yoonghan/walcron-microfrontend-shared/pull-request.yml
+[build]: https://github.com/yoonghan/walcron-microfrontend-shared/actions?query=workflow
+[coverage-badge]: https://img.shields.io/codecov/c/github/yoonghan/walcron-microfrontend-shared.svg?style=flat-square
+[coverage]: https://codecov.io/gh/yoonghan/walcron-microfrontend-shared
