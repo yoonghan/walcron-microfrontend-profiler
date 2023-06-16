@@ -23,10 +23,17 @@ jobs:
         run: |
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
           echo "@yoonghan:registry=https://npm.pkg.github.com/" >> ~/.npmrc
-          echo "--${{ secrets.NPM_TOKEN }}--"
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
 
       - name: 📥 Download deps
-        run: npm ci
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci  --ignore-scripts
 
       # as requested by the React team :)
       # https://reactjs.org/blog/2019/10/22/react-release-channels.html#using-the-next-channel-for-integration-testing
