@@ -13,6 +13,7 @@ export default defineConfig({
       exposes: {
         "./SignIn": "./src/components/SignIn/index.tsx",
         "./Button": "./src/components/Button/index.tsx",
+        "./bootstrap": "./src/bootstrap.tsx",
       },
       shared: ["react", "react-dom"],
     }),
