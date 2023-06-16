@@ -19,10 +19,14 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: "npm"
 
+      - name: Authenticate with private NPM package
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          echo "@yoonghan:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+          echo "--${{ secrets.NPM_TOKEN }}--"
+
       - name: 📥 Download deps
         run: npm ci
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # as requested by the React team :)
       # https://reactjs.org/blog/2019/10/22/react-release-channels.html#using-the-next-channel-for-integration-testing
