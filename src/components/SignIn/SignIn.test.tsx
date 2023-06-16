@@ -1,6 +1,7 @@
 import SignIn from ".";
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 describe("SignIn", () => {
   it("should render login component correctly", () => {
@@ -24,5 +25,10 @@ describe("SignIn", () => {
     ).toBeInTheDocument();
 
     expect(screen.getByText(/^Copyright ©.*2023\.$/)).toBeInTheDocument();
+  });
+
+  it("should be able to click on submit", async () => {
+    render(<SignIn />);
+    await userEvent.click(screen.getByRole("button", { name: "Sign In" }));
   });
 });
