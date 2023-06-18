@@ -1,3 +1,21 @@
-const Button = () => <div>I am a Button</div>
+import { useState } from "react";
 
-export default Button
+/*Simple react component with states*/
+const Button = () => {
+  const [counter, setCounter] = useState(0);
+
+  return (
+    <div>
+      <div>{counter}</div>
+      <button
+        onClick={() => {
+          setCounter(counter + 1);
+        }}
+      >
+        I am a Button
+      </button>
+    </div>
+  );
+};
+
+export default Button;
