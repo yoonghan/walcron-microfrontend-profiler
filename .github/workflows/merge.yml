@@ -43,5 +43,32 @@ jobs:
       - name: ⚛️ Setup react
         run: npm install react@${{ matrix.react }} react-dom@${{ matrix.react }}
 
+      - name: ✅ Validate test script
+        run: npm run test:ci
+
       - name: 📤 Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v3x
+
+      - name: ⬇️ Checkout container repo
+        uses: actions/checkout@v3
+        with:
+          repository: yoonghan/walcron-microfrontend-container
+          token: ${{ secrets.GH_PAT }}
+          path: container
+
+      - name: ✅ Validate test script
+        run: |
+          npm run build
+          cd container
+          git branch new-dist
+          git checkout new-dist
+          cd ..
+          rm -rf container/external_modules/profiler
+          mkdir container/external_modules
+          cp -rf /dist/* container/external_modules/profiler
+          cd container
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Generate new dist"
+          git push origin new-dist
