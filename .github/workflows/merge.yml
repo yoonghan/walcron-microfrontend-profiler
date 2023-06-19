@@ -32,11 +32,15 @@ jobs:
           path: ./node_modules
           key: modules-${{ hashFiles('package-lock.json') }}
 
+      - name: Authenticate with private NPM package
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          echo "@yoonghan:registry=https://npm.pkg.github.com/" >> ~/.npmrc
+
       - name: 📥 Download deps
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --ignore-scripts
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # as requested by the React team :)
       # https://reactjs.org/blog/2019/10/22/react-release-channels.html#using-the-next-channel-for-integration-testing
