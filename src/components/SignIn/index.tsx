@@ -10,16 +10,12 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { Copyright } from "@yoonghan/walcron-microfrontend-shared"; 
+import { Copyright } from "@yoonghan/walcron-microfrontend-shared";
 
 export default function SignIn() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
   };
 
   return (
