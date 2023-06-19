@@ -71,10 +71,12 @@ jobs:
           mkdir container/external_modules/profiler
           cp -rf dist/* container/external_modules/profiler
           cd container
-          git config user.name ${{ secrets.GH_USER_NAME }}
-          git config user.email ${{ secrets.GH_USER_EMAIL }}
+          git config user.name ${{ vars.GH_USER_NAME }}
+          git config user.email ${{ vars.GH_USER_EMAIL }}
           git add .
           git commit -m "Generate new profiler dist"
           git push origin $BRANCH_NAME
           echo 'commit pushed'
           gh pr create --base $BRANCH_NAME --title "New Profiler distribution" --body "New profile generated and merged to master"
+        env:
+          GH_TOKEN: ${{ secrets.CONTAINER_PAT }}
