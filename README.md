@@ -43,6 +43,8 @@ To build for container / module federation use. If builds successfully a dist/as
 
 1. For accessing private repo, please allow Profile -> Settings -> Personal Access Token (classic), open read:packages (basically th esame as vercel deployment). For more info refer: https://docs.github.com/en/packages/working-with-a-github-packages-registry
 2. Add as Github secret in Settings->Secrets And variable and add NODE_AUTH_TOKEN key.
+3. Create a PAT for microfrontend-container repository, with these permission , personal profile -> Developer Settings -> Fine Grain Token -> Actions(R)/Commit Statues(RW)/Contents(RW)/Metadata(R). Add into secret variable with key of CONTAINER_PAT.
+4. Add 2 more secret variables GH_USER_NAME and GH_USER_EMAIL for distribution commit.
 
 [build-badge]: https://img.shields.io/github/actions/workflow/status/yoonghan/walcron-microfrontend-shared/pull-request.yml
 [build]: https://github.com/yoonghan/walcron-microfrontend-shared/actions?query=workflow

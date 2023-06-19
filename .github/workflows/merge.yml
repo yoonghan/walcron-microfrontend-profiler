@@ -49,7 +49,7 @@ jobs:
       - name: 📤 Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
 
-      - name: Create new distribution
+      - name: ▶️ Create new distribution
         run: npm run build
 
       - name: ⬇️ Checkout container repo
@@ -59,19 +59,21 @@ jobs:
           token: ${{ secrets.CONTAINER_PAT }}
           path: container
 
-      - name: Publish lastest dist/ to container
+      - name: ⬆️ Publish latest dist/ to container
         run: |
+          BRANCH_NAME=profiler-generated-dist
           ls
           cd container
-          git branch new-dist
-          git checkout new-dist
+          git branch $BRANCH_NAME
+          git checkout $BRANCH_NAME
           cd ..
           rm -rf container/external_modules/profiler
           mkdir container/external_modules/profiler
           cp -rf dist/* container/external_modules/profiler
           cd container
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name ${{ secrets.GH_USER_NAME }}
+          git config user.email ${{ secrets.GH_USER_EMAIL }}
           git add .
-          git commit -m "Generate new dist"
-          git push origin new-dist
+          git commit -m "Generate new profiler dist"
+          git push origin $BRANCH_NAME
+          gh pr create --base $BRANCH_NAME --title "New Profiler distribution" --body "New profile generated and merged to master"
