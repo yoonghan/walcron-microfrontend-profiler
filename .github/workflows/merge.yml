@@ -77,5 +77,6 @@ jobs:
           git commit -m "Generate new profiler dist"
           git push origin $BRANCH_NAME
           gh pr create --base master --title "New Profiler distribution" --body "New profile generated and merged to master"
+        continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.CONTAINER_PAT }}
