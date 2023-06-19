@@ -68,7 +68,7 @@ jobs:
           cd ..
           rm -rf container/external_modules/profiler
           mkdir container/external_modules/profiler
-          cp -rf /dist/* container/external_modules/profiler
+          cp -rf dist/* container/external_modules/profiler
           cd container
           git config user.name github-actions
           git config user.email github-actions@github.com
