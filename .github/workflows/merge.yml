@@ -56,8 +56,9 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           path: container
 
-      - name: ✅ Validate test script
+      - name: Publish lastest dist/
         run: |
+          ls
           npm run build
           cd container
           git branch new-dist
