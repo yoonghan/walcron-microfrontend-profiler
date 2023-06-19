@@ -67,7 +67,7 @@ jobs:
           git checkout new-dist
           cd ..
           rm -rf container/external_modules/profiler
-          mkdir container/external_modules
+          mkdir container/external_modules/profiler
           cp -rf /dist/* container/external_modules/profiler
           cd container
           git config user.name github-actions
