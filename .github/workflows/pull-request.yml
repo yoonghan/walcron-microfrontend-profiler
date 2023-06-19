@@ -19,17 +19,18 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: "npm"
 
-      - name: Authenticate with private NPM package
-        run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          echo "@yoonghan:registry=https://npm.pkg.github.com/" >> ~/.npmrc
-
       - name: Cache dependencies
         id: cache
         uses: actions/cache@v3
         with:
           path: ./node_modules
           key: modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Authenticate with private NPM package
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          echo "@yoonghan:registry=https://npm.pkg.github.com/" >> ~/.npmrc
 
       - name: 📥 Download deps
         if: steps.cache.outputs.cache-hit != 'true'
