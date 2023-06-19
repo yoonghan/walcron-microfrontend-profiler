@@ -49,6 +49,9 @@ jobs:
       - name: 📤 Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3x
 
+      - name: Create new distribution
+        run: npm run build
+
       - name: ⬇️ Checkout container repo
         uses: actions/checkout@v3
         with:
@@ -56,10 +59,9 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           path: container
 
-      - name: Publish lastest dist/
+      - name: Publish lastest dist/ to container
         run: |
           ls
-          npm run build
           cd container
           git branch new-dist
           git checkout new-dist
