@@ -1,7 +1,8 @@
 import Contact from "./routes/contact";
 import Basic from "./routes/basic";
+import { RouteObject } from "react-router-dom";
 
-const routes = [
+const routes: RouteObject[] = [
   {
     path: "contacts/:contactId",
     element: <Contact />,
