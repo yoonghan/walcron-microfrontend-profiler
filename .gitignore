@@ -25,3 +25,6 @@ dist-ssr
 
 # Testing
 coverage
+
+# Generate d.ts for module federation
+declaration
