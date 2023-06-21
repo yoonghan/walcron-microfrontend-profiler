@@ -66,6 +66,7 @@ jobs:
           cd container
           git branch $BRANCH_NAME
           git checkout $BRANCH_NAME
+          git pull origin $BRANCH_NAME
           cd ..
           rm -rf container/external_modules/profiler
           mkdir container/external_modules/profiler
