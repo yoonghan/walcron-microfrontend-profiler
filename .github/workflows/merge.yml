@@ -62,11 +62,9 @@ jobs:
       - name: ⬆️ Publish latest dist/ to container
         run: |
           BRANCH_NAME=profiler-generated-dist
-          ls
           cd container
           git branch $BRANCH_NAME
           git checkout $BRANCH_NAME
-          git pull origin $BRANCH_NAME
           cd ..
           rm -rf container/external_modules/profiler
           mkdir container/external_modules/profiler
