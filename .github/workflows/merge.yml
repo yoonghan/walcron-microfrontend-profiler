@@ -61,7 +61,7 @@ jobs:
 
       - name: ⬆️ Publish latest dist/ to container
         run: |
-          BRANCH_NAME=profiler-generated-dist
+          BRANCH_NAME=profiler-dist-$(date +%s)
           cd container
           git branch $BRANCH_NAME
           git checkout $BRANCH_NAME
