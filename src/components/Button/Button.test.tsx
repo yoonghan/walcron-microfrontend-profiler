@@ -7,7 +7,7 @@ describe("Button", () => {
   it("should render button component correctly", () => {
     render(<Button />);
     expect(screen.getByText("0")).toBeInTheDocument();
-    expect(screen.getByText("I am a Button")).toBeInTheDocument();
+    expect(screen.getByText("I am Button")).toBeInTheDocument();
   });
 
   it("should render button component correctly", async () => {
