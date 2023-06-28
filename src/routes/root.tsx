@@ -1,33 +1,21 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import defaultTheme from "../components/style/theme";
+import { ThemeProvider, Typography, Link } from "@mui/material";
 
 export default function Root() {
   return (
-    <>
+    <ThemeProvider theme={defaultTheme}>
       <div id="sidebar">
-        <h1>React Router Contacts</h1>
-        <div>
-          <form id="search-form" role="search">
-            <input
-              id="q"
-              aria-label="Search contacts"
-              placeholder="Search"
-              type="search"
-              name="q"
-            />
-            <div id="search-spinner" aria-hidden hidden={true} />
-            <div className="sr-only" aria-live="polite"></div>
-          </form>
-          <form method="post">
-            <button type="submit">New</button>
-          </form>
-        </div>
+        <Typography variant="h1" component="h2">
+          Navigation
+        </Typography>
         <nav>
           <ul>
             <li>
-              <Link to={`contacts/1`}>Your Name</Link>
+              <Link href={`contacts/1`}>Your Name</Link>
             </li>
             <li>
-              <Link to={`contacts/2`}>Your Friend</Link>
+              <Link href={`contacts/2`}>Your Friend</Link>
             </li>
           </ul>
         </nav>
@@ -35,6 +23,6 @@ export default function Root() {
       <div id="detail">
         <Outlet />
       </div>
-    </>
+    </ThemeProvider>
   );
 }
