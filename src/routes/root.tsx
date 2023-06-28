@@ -17,6 +17,9 @@ export default function Root() {
             <li>
               <Link href={`contacts/2`}>Your Friend</Link>
             </li>
+            <li>
+              <Link href={`basic`}>Basic</Link>
+            </li>
           </ul>
         </nav>
       </div>
