@@ -12,7 +12,7 @@ const Button = () => {
           setCounter(counter + 1);
         }}
       >
-        I am Button
+        I am Button 2
       </button>
     </div>
   );

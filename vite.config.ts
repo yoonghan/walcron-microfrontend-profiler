@@ -6,6 +6,7 @@ export const federationExposedComponents = {
   "./SignIn": "./src/components/SignIn/index.tsx",
   "./Button": "./src/components/Button/index.tsx",
   "./GroupButton": "./src/components/GroupButton/index.tsx",
+  "./mount": "./src/mount.tsx",
   "./appRoutes": "./src/appRoutes.tsx",
   "./Contact": "./src/routes/contact.tsx",
   "./Basic": "./src/routes/basic.tsx",
@@ -22,7 +23,17 @@ export default defineConfig({
       filename: "remoteEntry.js",
       // Modules to expose
       exposes: federationExposedComponents,
-      shared: ["react", "react-dom", "react-router-dom"],
+      shared: {
+        react: {
+          requiredVersion: "^18.2.0",
+        },
+        "react-dom": {
+          requiredVersion: "^18.2.0",
+        },
+        "react-router-dom": {
+          requiredVersion: "^6.13.0",
+        },
+      },
     }),
   ],
   build: {
