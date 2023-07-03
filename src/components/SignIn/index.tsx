@@ -12,11 +12,12 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { Copyright } from "@yoonghan/walcron-microfrontend-shared";
 
-export default function SignIn() {
+export default function SignIn({ onSignIn }: { onSignIn: () => void }) {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log(data);
+    onSignIn();
   };
 
   return (
