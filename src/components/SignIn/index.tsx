@@ -1,7 +1,6 @@
-import * as React from "react";
+import { FormEvent } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
@@ -13,7 +12,7 @@ import Container from "@mui/material/Container";
 import { Copyright } from "@yoonghan/walcron-microfrontend-shared";
 
 export default function SignIn({ onSignIn }: { onSignIn: () => void }) {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log(data);
@@ -22,7 +21,6 @@ export default function SignIn({ onSignIn }: { onSignIn: () => void }) {
 
   return (
     <Container component="main" maxWidth="xs">
-      <CssBaseline />
       <Box
         sx={{
           marginTop: 8,

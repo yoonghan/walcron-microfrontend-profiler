@@ -5,6 +5,7 @@ import Root from "./routes/root";
 import ErrorPage from "./error-page";
 import SignIn from "./components/SignIn";
 import SignOut from "./components/SignOut";
+import { NavigatorListener } from "./routes/navigatorListener";
 
 type Props = {
   onSignIn: () => void;
@@ -13,6 +14,8 @@ type Props = {
 
 const routes = (
   path: string,
+  appName = "profiler",
+  containerName = "container",
   errorElement = <ErrorPage />,
   props: Props = {
     onSignIn: () => {
@@ -24,7 +27,11 @@ const routes = (
   }
 ): RouteObject => ({
   path,
-  element: <Root />,
+  element: (
+    <NavigatorListener appName={appName} containerName={containerName}>
+      <Root />
+    </NavigatorListener>
+  ),
   errorElement,
   children: [
     {
