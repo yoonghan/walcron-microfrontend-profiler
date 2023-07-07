@@ -37,13 +37,13 @@ export const NavigatorListener = ({
     }
 
     window.addEventListener(
-      `${containerName}] navigated`,
+      `[${containerName}] navigated`,
       shellNavigationHandler
     );
 
     return () => {
       window.removeEventListener(
-        `${containerName}] navigated`,
+        `[${containerName}] navigated`,
         shellNavigationHandler
       );
     };
