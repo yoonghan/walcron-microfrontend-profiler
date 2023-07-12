@@ -13,7 +13,6 @@ type Props = {
 };
 
 const routes = (
-  path: string,
   appName = "profiler",
   containerName = "container",
   errorElement = <ErrorPage />,
@@ -26,7 +25,7 @@ const routes = (
     },
   }
 ): RouteObject => ({
-  path,
+  path: "/",
   element: (
     <NavigatorListener appName={appName} containerName={containerName}>
       <Root />
