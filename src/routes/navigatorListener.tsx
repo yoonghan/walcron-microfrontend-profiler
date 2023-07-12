@@ -28,7 +28,6 @@ export const NavigatorListener = ({
   useEffect(() => {
     function shellNavigationHandler(event: Event) {
       const pathname = (event as CustomEvent<string>).detail;
-
       //matchRoutes(routes(), { pathname }) not usable
       if (location.pathname === pathname) {
         return;
