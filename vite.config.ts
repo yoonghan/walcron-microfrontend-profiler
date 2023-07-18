@@ -7,8 +7,6 @@ export const federationExposedComponents = {
   "./Button": "./src/components/Button/index.tsx",
   "./GroupButton": "./src/components/GroupButton/index.tsx",
   "./appRoutes": "./src/appRoutes.tsx",
-  "./Contact": "./src/routes/contact.tsx",
-  "./Basic": "./src/routes/basic.tsx",
 };
 
 export const federationName = "profiler";

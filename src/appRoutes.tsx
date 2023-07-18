@@ -1,7 +1,6 @@
-import Contact from "./routes/contact";
 import About from "./routes/About";
 import { RouteObject } from "react-router-dom";
-import Root from "./routes/root";
+import Root from "./routes/Root";
 import ErrorPage from "./error-page";
 import SignIn from "./components/SignIn";
 import SignOut from "./components/SignOut";
@@ -33,10 +32,6 @@ const routes = (
   ),
   errorElement,
   children: [
-    {
-      path: "contacts/:contactId",
-      element: <Contact />,
-    },
     {
       path: "about",
       element: <About />,
