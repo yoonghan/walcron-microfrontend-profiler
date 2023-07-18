@@ -1,5 +1,5 @@
 import Contact from "./routes/contact";
-import Basic from "./routes/basic";
+import About from "./routes/About";
 import { RouteObject } from "react-router-dom";
 import Root from "./routes/root";
 import ErrorPage from "./error-page";
@@ -38,8 +38,8 @@ const routes = (
       element: <Contact />,
     },
     {
-      path: "basic",
-      element: <Basic />,
+      path: "about",
+      element: <About />,
     },
     {
       path: "auth/login",
