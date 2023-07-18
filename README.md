@@ -49,6 +49,12 @@ To build for typescripting for module federation use. If builds successfully a d
 2. Create a PAT for microfrontend-container repository, with these permission , personal profile -> Developer Settings -> Fine Grain Token -> Actions(R)/Commit Statues(RW)/Contents(RW)/Metadata(R)/Pull Request(RW). Add into secret variable with key of CONTAINER_PAT.
 3. Add 2 repository variables(not secret), GH_USER_NAME and GH_USER_EMAIL for distribution commit.
 
+## POC
+
+1. Bootstrap from vite directly.
+2. Test cases can be run independantly.
+3. Extension of libraries that can be shared; tested on React, ReactDOM, React router, MUI.
+
 [build-badge]: https://img.shields.io/github/actions/workflow/status/yoonghan/walcron-microfrontend-profiler/pull-request.yml
 [build]: https://github.com/yoonghan/walcron-microfrontend-profiler/actions?query=workflow
 [coverage-badge]: https://img.shields.io/codecov/c/github/yoonghan/walcron-microfrontend-profiler.svg?style=flat-square
