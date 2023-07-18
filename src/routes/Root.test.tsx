@@ -6,12 +6,10 @@ import { MemoryRouter, Route, Routes } from "react-router-dom";
 describe("Root", () => {
   it("should render child in outlet correctly", () => {
     render(
-      <MemoryRouter initialEntries={["/root/about"]}>
+      <MemoryRouter initialEntries={["/root/outlet"]}>
         <Routes>
           <Route path="/root" element={<Root />}>
-            <Route path="/outlet">
-              <div>Within Outlet</div>
-            </Route>
+            <Route path="outlet" element={<div>Within Outlet</div>} />
           </Route>
         </Routes>
       </MemoryRouter>
