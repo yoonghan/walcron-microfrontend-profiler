@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export const NavigatorListener = ({
+const NavigatorListener = ({
   children,
   appName,
   containerName,
@@ -50,3 +50,5 @@ export const NavigatorListener = ({
 
   return children;
 };
+
+export default NavigatorListener;

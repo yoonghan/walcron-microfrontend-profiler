@@ -4,7 +4,7 @@ import Root from "./routes/Root";
 import ErrorPage from "./error-page";
 import SignIn from "./components/SignIn";
 import SignOut from "./components/SignOut";
-import { NavigatorListener } from "./routes/navigatorListener";
+import NavigatorListener from "./routes/NavigatorListener";
 
 type Props = {
   onSignIn: () => void;
