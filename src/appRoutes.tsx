@@ -41,7 +41,7 @@ const routes = ({
     },
     {
       path: "auth/logout",
-      element: <SignOut {...props} />,
+      element: <SignOut {...props} redirect="/auth/login" />,
     },
   ],
 });

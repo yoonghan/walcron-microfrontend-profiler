@@ -1,12 +1,23 @@
 import { Typography } from "@mui/material";
 import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
-const SignOut = ({ onSignOut }: { onSignOut: () => void }) => {
+const SignOut = ({
+  onSignOut,
+  redirect,
+}: {
+  onSignOut: () => void;
+  redirect: string;
+}) => {
   useEffect(() => {
     onSignOut();
   }, [onSignOut]);
 
-  return <Typography>Signing out</Typography>;
+  return (
+    <>
+      <Navigate to={redirect} replace={true} />
+    </>
+  );
 };
 
 export default SignOut;
