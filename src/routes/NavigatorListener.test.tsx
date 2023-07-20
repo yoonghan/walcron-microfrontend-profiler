@@ -60,4 +60,17 @@ describe("NavigatorListener", () => {
     );
     expect(await screen.findByText("Child Container")).toBeInTheDocument();
   });
+
+  it("should not fail when same navigation path is accessed again", async () => {
+    render(<Wrapper appListenerFn={vi.fn()} />);
+    expect(screen.getByText("Root Container")).toBeInTheDocument();
+    window.dispatchEvent(
+      new CustomEvent(`[${containerName}] navigated`, { detail: "/child" })
+    );
+    expect(await screen.findByText("Child Container")).toBeInTheDocument();
+    window.dispatchEvent(
+      new CustomEvent(`[${containerName}] navigated`, { detail: "/child" })
+    );
+    expect(screen.getByText("Child Container")).toBeInTheDocument();
+  });
 });

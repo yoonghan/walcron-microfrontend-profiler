@@ -5,7 +5,14 @@ import routes from "./appRoutes";
 import reportWebVitals from "./webvital/reportWebVitals";
 import consoleReportHandler from "./webvital/consoleReportHandler";
 
-const router = createBrowserRouter([routes()]);
+const router = createBrowserRouter([
+  routes({
+    props: {
+      onSignIn: () => {},
+      onSignOut: () => {},
+    },
+  }),
+]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
