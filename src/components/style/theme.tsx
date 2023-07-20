@@ -1,3 +1,5 @@
+/* istanbul ignore file -- @preserve */
+/** Ignore styling for test case **/
 import * as React from "react";
 import createTheme from "@mui/material/styles/createTheme";
 import { green, purple } from "@mui/material/colors";
