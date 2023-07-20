@@ -3,12 +3,7 @@ import react from "@vitejs/plugin-react";
 import federation from "@originjs/vite-plugin-federation";
 
 export const federationExposedComponents = {
-  "./SignIn": "./src/components/SignIn/index.tsx",
-  "./Button": "./src/components/Button/index.tsx",
-  "./GroupButton": "./src/components/GroupButton/index.tsx",
   "./appRoutes": "./src/appRoutes.tsx",
-  "./Contact": "./src/routes/contact.tsx",
-  "./Basic": "./src/routes/basic.tsx",
 };
 
 export const federationName = "profiler";

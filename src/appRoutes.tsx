@@ -1,30 +1,28 @@
-import Contact from "./routes/contact";
 import About from "./routes/About";
-import { RouteObject } from "react-router-dom";
-import Root from "./routes/root";
-import ErrorPage from "./error-page";
+import Root from "./routes/Root";
+import ErrorPage from "./routes/ErrorPage";
 import SignIn from "./components/SignIn";
 import SignOut from "./components/SignOut";
-import { NavigatorListener } from "./routes/navigatorListener";
+import NavigatorListener from "./routes/NavigatorListener";
+import { ReactNode } from "react";
+import { RouteObject } from "react-router-dom";
 
 type Props = {
   onSignIn: () => void;
   onSignOut: () => void;
 };
 
-const routes = (
+const routes = ({
   appName = "profiler",
   containerName = "container",
   errorElement = <ErrorPage />,
-  props: Props = {
-    onSignIn: () => {
-      /* Do nothing */
-    },
-    onSignOut: () => {
-      /* Do nothing */
-    },
-  }
-): RouteObject => ({
+  props,
+}: {
+  appName?: string;
+  containerName?: string;
+  errorElement?: ReactNode;
+  props: Props;
+}): RouteObject => ({
   path: "/",
   element: (
     <NavigatorListener appName={appName} containerName={containerName}>
@@ -33,10 +31,6 @@ const routes = (
   ),
   errorElement,
   children: [
-    {
-      path: "contacts/:contactId",
-      element: <Contact />,
-    },
     {
       path: "about",
       element: <About />,
@@ -47,7 +41,7 @@ const routes = (
     },
     {
       path: "auth/logout",
-      element: <SignOut {...props} />,
+      element: <SignOut {...props} redirect="/auth/login" />,
     },
   ],
 });

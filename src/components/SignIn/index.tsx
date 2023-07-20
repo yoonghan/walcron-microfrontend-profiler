@@ -1,22 +1,30 @@
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import Alert from "@mui/material/Alert";
 import { Copyright } from "@yoonghan/walcron-microfrontend-shared";
 
 export default function SignIn({ onSignIn }: { onSignIn: () => void }) {
+  const [invalidForm, setInvalidForm] = useState(false);
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log(data);
-    onSignIn();
+    if (
+      data.get("email") === "walcron@email.com" &&
+      data.get("password") === "testPassword"
+    ) {
+      setInvalidForm(false);
+      onSignIn();
+      return;
+    }
+    setInvalidForm(true);
   };
 
   return (
@@ -54,10 +62,14 @@ export default function SignIn({ onSignIn }: { onSignIn: () => void }) {
             id="password"
             autoComplete="current-password"
           />
+          {invalidForm && (
+            <Alert severity="error">Try walcron@email.com/testPassword</Alert>
+          )}
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
+
           <Button
             type="submit"
             fullWidth
@@ -66,18 +78,6 @@ export default function SignIn({ onSignIn }: { onSignIn: () => void }) {
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
         </Box>
       </Box>
       <Copyright lastUpdatedYear={2023} />

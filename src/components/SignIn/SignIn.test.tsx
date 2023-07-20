@@ -23,19 +23,27 @@ describe("SignIn", () => {
 
     expect(screen.getByRole("button", { name: "Sign In" })).toBeInTheDocument();
 
-    expect(
-      screen.getByRole("link", { name: "Forgot password?" })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("link", { name: "Don't have an account? Sign Up" })
-    ).toBeInTheDocument();
-
     expect(screen.getByText(/^Copyright ©.*2023\.$/)).toBeInTheDocument();
   });
 
-  it("should be able to click on submit", async () => {
+  it("should be able to click on submit with invalid authentication", async () => {
     const onSignInMock = vi.fn();
     render(<SignIn onSignIn={onSignInMock} />);
+    await userEvent.click(screen.getByRole("button", { name: "Sign In" }));
+    expect(
+      screen.getByText("Try walcron@email.com/testPassword")
+    ).toBeInTheDocument();
+    expect(onSignInMock).not.toHaveBeenCalled();
+  });
+
+  it("should be able to signin with valid authentication", async () => {
+    const onSignInMock = vi.fn();
+    render(<SignIn onSignIn={onSignInMock} />);
+    await userEvent.type(
+      screen.getByLabelText("Email Address *"),
+      "walcron@email.com"
+    );
+    await userEvent.type(screen.getByLabelText("Password *"), "testPassword");
     await userEvent.click(screen.getByRole("button", { name: "Sign In" }));
     expect(onSignInMock).toHaveBeenCalledOnce();
   });
