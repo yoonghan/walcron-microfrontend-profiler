@@ -13,15 +13,14 @@ try {
 }
 
 Object.entries(federationExposedComponents).forEach(([componentKey, path]) => {
-  const pathWithNoSrc = path.replace("./src/", "");
-  const pathWithNoSrcAndExtension = pathWithNoSrc.replace(/\..*$/, ".d.ts");
+  const pathWithNoExtension = path.substring(0, path.lastIndexOf(".")) + ".d.ts";
   const componentKeyWithNoFolder = componentKey.substring(
     componentKey.lastIndexOf("/") + 1,
     componentKey.length
   );
 
   const fileContent = fs.readFileSync(
-    `./declaration/${pathWithNoSrcAndExtension}`,
+    `./declaration/${pathWithNoExtension}`,
     "utf-8"
   );
   const fileContentWithoutDeclare = fileContent.replace("declare ", "");
