@@ -6,6 +6,7 @@ import SignOut from "./components/SignOut";
 import NavigatorListener from "./routes/NavigatorListener";
 import { ReactNode } from "react";
 import { RouteObject } from "react-router-dom";
+import Profiler from "./components/Profile";
 
 type Props = {
   onSignIn: () => void;
@@ -34,6 +35,10 @@ const routes = ({
     {
       path: "about",
       element: <About />,
+    },
+    {
+      path: "profile",
+      element: <Profiler />,
     },
     {
       path: "auth/login",
