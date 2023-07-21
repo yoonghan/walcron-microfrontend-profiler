@@ -33,6 +33,6 @@ describe("error-page", () => {
 
   it("should render error page that threw exception", async () => {
     renderComponent("/errorpage");
-    expect(await screen.findByText("Loading Error")).toBeInTheDocument();
+    expect(await screen.findByText("Loading Error", undefined, {interval: 200})).toBeInTheDocument();
   });
 });
