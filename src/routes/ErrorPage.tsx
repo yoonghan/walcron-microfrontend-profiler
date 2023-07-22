@@ -1,3 +1,4 @@
+/* istanbul ignore file -- @preserve */
 import { useRouteError } from "react-router-dom";
 
 export default function ErrorPage() {
