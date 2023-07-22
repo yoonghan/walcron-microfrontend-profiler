@@ -21,4 +21,23 @@ describe("SignOut", () => {
     expect(screen.getByText("Login")).toBeInTheDocument();
     expect(onSignOutFn).toHaveBeenCalledOnce();
   });
+
+  it("should stay in signout page if redirect triggers itself", () => {
+    const onSignOutFn = vi.fn();
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <SignOut onSignOut={onSignOutFn} redirect="/auth/logout" />
+            }
+          ></Route>
+        </Routes>
+      </MemoryRouter>
+    );
+
+    expect(screen.getByText("Signing out")).toBeInTheDocument();
+    expect(onSignOutFn).toHaveBeenCalledOnce();
+  });
 });

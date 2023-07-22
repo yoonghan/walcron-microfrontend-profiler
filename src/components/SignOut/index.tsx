@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignOut = ({
   onSignOut,
@@ -8,15 +8,16 @@ const SignOut = ({
   onSignOut: () => void;
   redirect: string;
 }) => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     onSignOut();
-  }, [onSignOut]);
+    if (redirect.indexOf("logout") === -1) {
+      navigate(redirect);
+    }
+  }, [navigate, onSignOut, redirect]);
 
-  return (
-    <>
-      <Navigate to={redirect} replace={true} />
-    </>
-  );
+  return <>Signing out</>;
 };
 
 export default SignOut;
