@@ -45,7 +45,7 @@ export default function Profiler() {
           disabled={true}
         />
         <Grid container>
-          <Grid xs={3} sx={{ marginTop: 2 }}>
+          <Grid item xs={3} sx={{ marginTop: 2 }}>
             <FormControl sx={{ minWidth: 120, maxWidth: 300 }} disabled={true}>
               <InputLabel shrink htmlFor="phone-code" required={true}>
                 Code
@@ -56,7 +56,7 @@ export default function Profiler() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid xs={7}>
+          <Grid item xs={9}>
             <TextField
               margin="normal"
               required
