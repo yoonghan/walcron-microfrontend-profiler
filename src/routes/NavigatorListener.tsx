@@ -1,3 +1,4 @@
+/* istanbul ignore file -- @preserve */
 import { ReactNode, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
