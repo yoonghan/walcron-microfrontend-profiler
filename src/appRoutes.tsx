@@ -1,6 +1,6 @@
 import About from "./routes/About";
 import Root from "./routes/Root";
-import ErrorPage from "./routes/ErrorPage";
+import ErrorPage from "./routes/ExtendedErrorPage";
 import SignIn from "./components/SignIn";
 import SignOut from "./components/SignOut";
 import NavigatorListener from "./routes/NavigatorListener";

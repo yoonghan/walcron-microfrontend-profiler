@@ -1,4 +1,5 @@
-import { ReactNode, useEffect } from "react";
+import { useNavigationListener } from "@yoonghan/walcron-microfrontend-shared";
+import { ReactNode } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const NavigatorListener = ({
@@ -13,40 +14,14 @@ const NavigatorListener = ({
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    window.dispatchEvent(
-      new CustomEvent(`[${appName}] navigated`, { detail: location.pathname })
-    );
-  }, [appName, location]);
-
-  // useEffect(() => {
-  //   const stateLocation =
-  //     location.pathname === "/" ? baseUrl : `${baseUrl}${location.pathname}`;
-  //   if (skipPath !== stateLocation) history.pushState({}, "", stateLocation);
-  // }, [location.pathname, skipPath]);
-
-  useEffect(() => {
-    function shellNavigationHandler(event: Event) {
-      const pathname = (event as CustomEvent<string>).detail;
-      //matchRoutes(routes(), { pathname }) not usable
-      if (location.pathname === pathname) {
-        return;
-      }
-      navigate(pathname);
-    }
-
-    window.addEventListener(
-      `[${containerName}] navigated`,
-      shellNavigationHandler
-    );
-
-    return () => {
-      window.removeEventListener(
-        `[${containerName}] navigated`,
-        shellNavigationHandler
-      );
-    };
-  }, [containerName, location.pathname, navigate]);
+  useNavigationListener({
+    appName,
+    containerName,
+    props: {
+      pathname: location.pathname,
+      navigate,
+    },
+  });
 
   return children;
 };
