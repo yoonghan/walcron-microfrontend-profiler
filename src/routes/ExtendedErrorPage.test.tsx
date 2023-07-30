@@ -1,10 +1,10 @@
-import ErrorPage from "./ErrorPage";
+import ErrorPage from "./ExtendedErrorPage";
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import Root from "./Root";
 
-describe("error-page", () => {
+describe("ExtendedErrorPage", () => {
   const renderComponent = (initialPageEntry: string) => {
     const router = createMemoryRouter(
       [
@@ -33,6 +33,8 @@ describe("error-page", () => {
 
   it("should render error page that threw exception", async () => {
     renderComponent("/errorpage");
-    expect(await screen.findByText("Loading Error", undefined, {interval: 200})).toBeInTheDocument();
+    expect(
+      await screen.findByText("Loading Error", undefined, { interval: 200 })
+    ).toBeInTheDocument();
   });
 });

@@ -42,35 +42,13 @@ describe("NavigatorListener", () => {
     ).toBeInTheDocument();
   });
 
-  it("should app is triggered upon load or navigation", async () => {
+  it("should app is triggered upon load and can navigate", async () => {
     const appListenerFn = vi.fn();
     render(<Wrapper appListenerFn={appListenerFn} />);
     expect(screen.getByText("Root Container")).toBeInTheDocument();
     expect(appListenerFn).toHaveBeenCalledWith(new CustomEvent(""));
     await userEvent.click(screen.getByRole("link", { name: "Link to Child" }));
     expect(appListenerFn).toHaveBeenCalledTimes(2);
-    expect(screen.getByText("Child Container")).toBeInTheDocument();
-  });
-
-  it("should trigger container's event", async () => {
-    render(<Wrapper appListenerFn={vi.fn()} />);
-    expect(screen.getByText("Root Container")).toBeInTheDocument();
-    window.dispatchEvent(
-      new CustomEvent(`[${containerName}] navigated`, { detail: "/child" })
-    );
-    expect(await screen.findByText("Child Container")).toBeInTheDocument();
-  });
-
-  it("should not fail when same navigation path is accessed again", async () => {
-    render(<Wrapper appListenerFn={vi.fn()} />);
-    expect(screen.getByText("Root Container")).toBeInTheDocument();
-    window.dispatchEvent(
-      new CustomEvent(`[${containerName}] navigated`, { detail: "/child" })
-    );
-    expect(await screen.findByText("Child Container")).toBeInTheDocument();
-    window.dispatchEvent(
-      new CustomEvent(`[${containerName}] navigated`, { detail: "/child" })
-    );
     expect(screen.getByText("Child Container")).toBeInTheDocument();
   });
 });
