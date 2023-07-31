@@ -34,6 +34,11 @@ describe("appRoutes", () => {
     expect(screen.queryByText("Not Found")).not.toBeInTheDocument();
   });
 
+  it("should show be able to navigate to /auth", () => {
+    render(<Wrapper goto={["/auth/login"]} />);
+    expect(screen.queryByText("Not Found")).not.toBeInTheDocument();
+  });
+
   it("should show be able to navigate to /auth/login", () => {
     render(<Wrapper goto={["/auth/login"]} />);
     expect(screen.queryByText("Not Found")).not.toBeInTheDocument();

@@ -33,6 +33,10 @@ const routes = ({
   errorElement,
   children: [
     {
+      path: "/",
+      element: <About />,
+    },
+    {
       path: "about",
       element: <About />,
     },
@@ -41,12 +45,18 @@ const routes = ({
       element: <Profiler />,
     },
     {
-      path: "auth/login",
-      element: <SignIn {...props} />,
-    },
-    {
-      path: "auth/logout",
-      element: <SignOut {...props} redirect="/auth/login" />,
+      path: "/auth",
+      element: <About />,
+      children: [
+        {
+          path: "login",
+          element: <SignIn {...props} />,
+        },
+        {
+          path: "logout",
+          element: <SignOut {...props} redirect="/auth/login" />,
+        },
+      ],
     },
   ],
 });
