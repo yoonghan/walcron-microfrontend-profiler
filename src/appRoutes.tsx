@@ -47,16 +47,14 @@ const routes = ({
     {
       path: "/auth",
       element: <About />,
-      children: [
-        {
-          path: "login",
-          element: <SignIn {...props} />,
-        },
-        {
-          path: "logout",
-          element: <SignOut {...props} redirect="/auth/login" />,
-        },
-      ],
+    },
+    {
+      path: "/auth/login",
+      element: <SignIn {...props} />,
+    },
+    {
+      path: "auth/logout",
+      element: <SignOut {...props} redirect="/auth/login" />,
     },
   ],
 });
